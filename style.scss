@@ -1,0 +1,61 @@
+$Color: darkcyan;
+$line: 3px;
+
+.clock {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: $line solid $Color;
+  border-radius: 50%;
+  margin: 50px auto;
+  %hands {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    background-color: $Color;
+  }
+  .hour-hand {
+    @extend %hands;
+    width: $line;
+    height: 50px;
+    transform: translate(-50%, -100%) rotate(30deg);
+    animation: rotate-hour 60s linear infinite;
+  }
+  .minute-hand {
+    @extend %hands;
+    width: $line;
+    height: 80px;
+    transform: translate(-50%, -100%) rotate(60deg);
+    animation: rotate-minute 12s linear infinite;
+  }
+  .center-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $line * 7 / 3;
+    height: $line * 7 / 3;
+    border-radius: 50%;
+    background-color: $Color;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes rotate-hour {
+  from {
+    transform: translate(-50%, -100%) rotate(150deg);
+  }
+
+  to {
+    transform: translate(-50%, -100%) rotate(510deg);
+  }
+}
+
+@keyframes rotate-minute {
+  from {
+    transform: translate(-50%, -100%) rotate(120deg);
+  }
+  to {
+    transform: translate(-50%, -100%) rotate(480deg);
+  }
+}
